@@ -33,10 +33,7 @@ app.use(express.static("public"));
 
     // READ ROUTES
       app.get("/api/workouts", (req,res) => {
-        db.Workout.aggregate([
-        {
-          $match: { } 
-        },{
+        db.Workout.aggregate([{
           $addFields: {
             totalDuration: { $sum: "$exercises.duration" }
           }
@@ -52,12 +49,6 @@ app.use(express.static("public"));
       app.get("/api/workouts/range", (req,res) => {
         db.Workout.aggregate([
           {
-            $match: {}
-          },{
-            $sort: {day: -1}
-          },{
-            $limit: 7 
-          },{
           $addFields: {
             totalWeight: { $sum: "$exercises.weight" },
             totalDuration: { $sum: "$exercises.duration" }

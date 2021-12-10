@@ -16,14 +16,14 @@ function calculateTotalWeight(data) {
   }
   
   function populateChart(data) {
-    data.reverse();
-    const durations = data.map(({ totalDuration }) => totalDuration);
+    let sortedData = data.slice(-7);
+    const durations = sortedData.map(({ totalDuration }) => totalDuration);
     const pounds = calculateTotalWeight(data);
   
     const line = document.querySelector('#canvas').getContext('2d');
     const bar = document.querySelector('#canvas2').getContext('2d');
   
-    const labels = data.map(({ day }) => {
+    const labels = sortedData.map(({ day }) => {
       const date = new Date(day);
   
       // Use JavaScript's `Intl` object to help format dates
@@ -31,6 +31,9 @@ function calculateTotalWeight(data) {
         weekday: 'short',
         month: 'short',
         day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
       }).format(date);
     });
   
