@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
 require('dotenv').config();
@@ -72,7 +73,7 @@ app.use(express.static("public"));
 
       
       app.get("/exercise", (req, res) => {
-        res.redirect("/exercise.html");
+        res.sendFile(path.join(__dirname, "public/exercise.html"));
       });
 
       app.get("/stats", (req, res) => {

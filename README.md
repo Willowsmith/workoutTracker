@@ -68,3 +68,5 @@ You are required to submit the following:
 * The URL to the deployed application
 
 * The URL to the GitHub repository
+
+Melyssa your application does load however it is not working correctly. When going to your heroku you are serving the html pages incorrectly. When a user goes to create a workout you have a workout created with a body and this should not be happening. The workout should be created with an {} nothing inside of it, then when we go and add exercises they are updating the specific workout with the id using a put. When pulling the information for the specific pages your aggregate is not written correctly as you have a match that should not exist, then later when using a sort and limit these are methods not objects in the call of the db.
